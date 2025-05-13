@@ -1,6 +1,6 @@
 <?php
 
-require 'config_db/config_db.php';
+require 'configdb/config_db.php';
 
 if (isset($_GET['hal'])) {
     $bagian = $_GET['hal'];

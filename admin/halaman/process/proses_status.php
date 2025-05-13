@@ -1,5 +1,5 @@
 <?php
-require '../../../config_db/config_db.php';
+require '../../../configdb/config_db.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['id']) {

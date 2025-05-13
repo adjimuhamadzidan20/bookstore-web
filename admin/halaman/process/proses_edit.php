@@ -1,5 +1,5 @@
 <?php
-require '../../../config_db/config_db.php';
+require '../../../configdb/config_db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['proses'] == 'edit_buku') {
     $id = $_GET['id'];
