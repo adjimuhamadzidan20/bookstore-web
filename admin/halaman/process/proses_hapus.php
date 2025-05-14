@@ -25,16 +25,4 @@ if ($_GET['proses'] == 'hapus_buku') {
     } else {
         echo 'Error :' . mysqli_error($connectDB);
     }
-} else if ($_GET['proses'] == 'hapus_user') {
-    $id = $_GET['id'];
-
-    $sql = "DELETE FROM tb_user WHERE id_user = '$id'";
-    $query = mysqli_query($connectDB, $sql);
-
-    if ($query) {
-        header('Location: ../../index.php?hal=data_pengguna');
-        exit;
-    } else {
-        echo 'Error :' . mysqli_error($connectDB);
-    }
 }

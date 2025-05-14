@@ -20,7 +20,7 @@ if (isset($_SESSION['id_admin'])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand text-uppercase" href="index.php">Bookstore</a>
         </div>
@@ -28,21 +28,25 @@ if (isset($_SESSION['id_admin'])) {
 
     <main>
         <div class="container p-3">
-            <div class="row">
-                <div class="col-5">
-                    <h1 class="mb-4">Login Admin</h1>
-                    <form action="halaman/process/proses_login_admin.php" method="post">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username" name="username" required>
+            <div class="row justify-content-center">
+                <div class="col-5 py-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="text-center h2 mb-2">Login Admin</h1>
+                            <div class="mb-3 text-center text-secondary">Masuk sebagai admin</div>
+                            <form action="halaman/process/proses_login_admin.php" method="post" class="border-top">
+                                <div class="mb-3 mt-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username" name="username" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="exampleFormControlPass" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="exampleFormControlPass" placeholder="Password" name="password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mb-2">Masuk</button>
+                            </form>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlPass" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleFormControlPass" placeholder="Password" name="password" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Masuk</button>
-                    </form>
+                    </div>
                 </div>
             </div>
 

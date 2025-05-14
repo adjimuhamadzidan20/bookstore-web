@@ -8,20 +8,20 @@ $query = mysqli_query($connectDB, $sql);
 
 <div class="row">
     <div class="col">
-        <h1 class="mb-4">Data Pesanan</h1>
-
-        <table class="table">
+        <h1 class="mb-4 h2">Daftar Pesanan</h1>
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
+                    <th scope="col" class="text-center">No</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Nama Pengguna</th>
                     <th scope="col">Judul Buku</th>
-                    <th scope="col">Jumlah</th>
-                    <th scope="col">Total</th>
+                    <th scope="col" class="text-center">Jumlah</th>
+                    <th scope="col" class="text-center">Total</th>
                     <th scope="col">Status</th>
                     <th scope="col">Metode</th>
                     <th scope="col">Waktu</th>
-                    <th scope="col">Opsi</th>
+                    <th scope="col" class="text-center">Opsi</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,11 +32,12 @@ $query = mysqli_query($connectDB, $sql);
                 ?>
                     <form action="halaman/process/proses_status.php?id=<?= $data['id_order']; ?>" method="post">
                         <tr>
-                            <th scope="row"><?= $no; ?></th>
+                            <td scope="row" class="text-center"><?= $no; ?></td>
+                            <td scope="row"><?= 'USR0' . $data['id_user']; ?></td>
                             <td><?= $data['nama_pengguna']; ?></td>
                             <td><?= $data['judul_buku']; ?></td>
-                            <td><?= $data['jumlah']; ?></td>
-                            <td><?= $data['harga']; ?></td>
+                            <td class="text-center"><?= $data['jumlah']; ?></td>
+                            <td><?= 'Rp. ' . number_format($data['harga'], 0, ',', '.'); ?></td>
                             <td>
                                 <select class="form-select" aria-label="Default select example" name="status">
                                     <option value="pending" <?= $data['status'] == 'pending' ? 'selected' : ''; ?>>Pending</option>
@@ -47,7 +48,7 @@ $query = mysqli_query($connectDB, $sql);
                             </td>
                             <td><?= $data['metode']; ?></td>
                             <td><?= $data['created_at']; ?></td>
-                            <td>
+                            <td class="text-center">
                                 <button class="btn btn-primary btn-sm">Ubah Status</button>
                             </td>
                         </tr>

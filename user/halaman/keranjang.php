@@ -12,7 +12,7 @@ $data = mysqli_num_rows($query);
 
 <div class="row">
     <div class="col">
-        <h1 class="mb-4">Keranjang</h1>
+        <h1 class="mb-4 h2">Keranjang</h1>
         <?php
         if ($data > 0) {
         ?>

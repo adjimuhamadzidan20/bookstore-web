@@ -1,4 +1,5 @@
 <?php
+require 'user/config_user/config_page_active.php';
 session_start();
 ?>
 
@@ -11,7 +12,7 @@ session_start();
     <?php
     if (isset($_SESSION['id_user'])) {
     ?>
-        <title>Bookstore | User</title>
+        <title>Bookstore | <?= $_SESSION['nama_pengguna']; ?></title>
     <?php
     } else {
     ?>
@@ -24,7 +25,7 @@ session_start();
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand text-uppercase" href="index.php">Bookstore</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,37 +34,37 @@ session_start();
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex gap-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?hal=beranda">Beranda</a>
+                        <a class="nav-link <?= $active1; ?>" href="index.php?hal=beranda&section=beranda">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?hal=tentang">Tentang</a>
+                        <a class="nav-link <?= $active2; ?>" href="index.php?hal=tentang&section=tentang">Tentang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?hal=kontak">Kontak</a>
+                        <a class="nav-link <?= $active3; ?>" href="index.php?hal=kontak&section=kontak">Kontak</a>
                     </li>
                     <?php
                     if (isset($_SESSION['id_user'])) {
                     ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?hal=pesanan">Pesanan</a>
+                            <a class="nav-link <?= $active4; ?>" href="index.php?hal=pesanan&section=riwayat">Riwayat</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?hal=keranjang">Keranjang</a>
-                        </li>
-                        <li class="nav-item">
-                            <span class="nav-link"><?= $_SESSION['nama_pengguna']; ?></span>
+                            <a class="nav-link <?= $active5; ?>" href="index.php?hal=keranjang&section=keranjang">Keranjang</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="user/config_user/proses_logout.php">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link active fw-bold"><?= $_SESSION['nama_pengguna']; ?></span>
                         </li>
                     <?php
                     } else {
                     ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?hal=loginuser">Keranjang</a>
+                            <a class="nav-link" href="index.php?hal=loginuser&section=login">Keranjang</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?hal=loginuser">Login</a>
+                            <a class="nav-link <?= $active6; ?>" href="index.php?hal=loginuser&section=login">Login</a>
                         </li>
                     <?php
                     }

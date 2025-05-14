@@ -1,4 +1,5 @@
 <?php
+require 'config_admin/config_page_active.php';
 session_start();
 
 if (!isset($_SESSION['id_admin'])) {
@@ -20,7 +21,7 @@ if (!isset($_SESSION['id_admin'])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand text-uppercase" href="index.php">Bookstore</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,22 +30,22 @@ if (!isset($_SESSION['id_admin'])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex gap-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?hal=data_kategori">Data Kategori</a>
+                        <a class="nav-link <?= $active1; ?>" href="index.php?hal=data_kategori&section=kategori">Data Kategori</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?hal=data_buku">Data Buku</a>
+                        <a class="nav-link <?= $active2; ?>" href="index.php?hal=data_buku&section=buku">Data Buku</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?hal=data_pengguna">Data Pengguna</a>
+                        <a class="nav-link <?= $active3; ?>" href="index.php?hal=data_pengguna&section=pengguna">Data Pengguna</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?hal=data_pesanan">Data Pesanan</a>
-                    </li>
-                    <li class="nav-item">
-                        <span class="nav-link"><?= $_SESSION['nama_admin']; ?></span>
+                        <a class="nav-link <?= $active4; ?>" href="index.php?hal=data_pesanan&section=pesanan">Data Pesanan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="halaman/process/proses_logout_admin.php">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link active fw-bold"><?= $_SESSION['nama_admin']; ?></span>
                     </li>
                 </ul>
             </div>

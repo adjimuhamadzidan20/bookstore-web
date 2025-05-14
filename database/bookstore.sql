@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Bulan Mei 2025 pada 12.49
+-- Waktu pembuatan: 15 Bulan Mei 2025 pada 01.25
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.1.31
 
@@ -87,10 +87,9 @@ CREATE TABLE `tb_kategori` (
 --
 
 INSERT INTO `tb_kategori` (`id_kategori`, `kategori`) VALUES
-(1, 'Novel'),
+(1, 'Pendidikan'),
 (3, 'Programming'),
-(4, 'Komik'),
-(5, 'Horror');
+(4, 'Komik');
 
 -- --------------------------------------------------------
 
@@ -104,6 +103,14 @@ CREATE TABLE `tb_keranjang` (
   `id_buku` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tb_keranjang`
+--
+
+INSERT INTO `tb_keranjang` (`id_cart`, `id_user`, `id_buku`, `jumlah`) VALUES
+(10, 2, 7, 1),
+(11, 3, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -217,19 +224,19 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT untuk tabel `tb_buku`
 --
 ALTER TABLE `tb_buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pesanan`

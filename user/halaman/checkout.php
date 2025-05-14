@@ -79,8 +79,8 @@ while ($data = mysqli_fetch_assoc($query2)) {
                             <div class="col">
                                 <h4>Cara Pembayaran</h4>
                                 <p>Metode pembayaran menggunakan transfer bank ke rekening berikut ini:</p>
-                                <div class="card bg-primary border-0 text-white mb-3">
-                                    <div class="card-body pb-0">
+                                <div class="card bg-body-tertiary border-0 text-secondary mb-3">
+                                    <div class="card-body pb-0" style="text-align: justify;">
                                         <p><b>BANK BNI</b></p>
                                         <p>No. Rekening : <br><b>1111 3333 5555</b></p>
                                         <p>Atas Nama : <br><b>BOOKSTORE</b></p>
