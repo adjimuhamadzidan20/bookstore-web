@@ -35,7 +35,7 @@ $query = mysqli_query($connectDB, $sql);
     ?>
         <div class="col-3 mb-3">
             <div class="card">
-                <img src="admin/uploads/<?= $data['gambar']; ?>" class="card-img-top object-fit-cover" alt="gambar" height="200">
+                <img src="admin/uploads/<?= $data['gambar']; ?>" class="card-img-top object-fit-cover" alt="gambar" height="400">
                 <div class="card-body">
                     <h5 class="card-title"><?= $data['judul_buku']; ?></h5>
                     <p class="card-text fw-bold mb-2">Rp. <?= number_format($data['harga'], 0, ',', '.'); ?></p>

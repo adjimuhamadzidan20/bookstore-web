@@ -3,16 +3,19 @@ require '../../configdb/config_db.php';
 
 $id = $_GET['id'];
 
+// get data buku
 $sqlBuku = "SELECT tb_keranjang.id_cart, tb_user.id_user, tb_user.nama_pengguna, tb_buku.id_buku, tb_buku.judul_buku, 
 tb_buku.harga, tb_keranjang.jumlah FROM tb_keranjang INNER JOIN tb_user ON tb_keranjang.id_user = tb_user.id_user 
 INNER JOIN tb_buku ON tb_keranjang.id_buku = tb_buku.id_buku WHERE tb_user.id_user = '$id'";
 $query = mysqli_query($connectDB, $sqlBuku);
 
+// get data buku untuk jumlah
 $sqlJumlah = "SELECT tb_keranjang.id_cart, tb_user.id_user, tb_user.nama_pengguna, tb_buku.id_buku, tb_buku.judul_buku, 
 tb_buku.harga, tb_keranjang.jumlah FROM tb_keranjang INNER JOIN tb_user ON tb_keranjang.id_user = tb_user.id_user 
 INNER JOIN tb_buku ON tb_keranjang.id_buku = tb_buku.id_buku WHERE tb_user.id_user = '$id'";
 $query2 = mysqli_query($connectDB, $sqlJumlah);
 
+// get data user
 $sqlUser = "SELECT id_user, nama_pengguna, jenis_kelamin, no_telp, alamat FROM tb_user WHERE id_user = '$id'";
 $query3 = mysqli_query($connectDB, $sqlUser);
 $dataUser = mysqli_fetch_assoc($query3);
@@ -33,6 +36,13 @@ while ($data = mysqli_fetch_assoc($query2)) {
     <title>Bookstore | Checkout</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <style>
+        .btn-primary {
+            background-color: #0c2461 !important;
+            border-color: #0c2461 !important;
+        }
+    </style>
 </head>
 
 <body>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Bulan Mei 2025 pada 01.25
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.1.31
+-- Generation Time: May 15, 2025 at 06:45 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_admin`
+-- Table structure for table `tb_admin`
 --
 
 CREATE TABLE `tb_admin` (
@@ -35,7 +35,7 @@ CREATE TABLE `tb_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_admin`
+-- Dumping data for table `tb_admin`
 --
 
 INSERT INTO `tb_admin` (`id_admin`, `username`, `password`, `nama_admin`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `tb_admin` (`id_admin`, `username`, `password`, `nama_admin`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_buku`
+-- Table structure for table `tb_buku`
 --
 
 CREATE TABLE `tb_buku` (
@@ -60,21 +60,21 @@ CREATE TABLE `tb_buku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_buku`
+-- Dumping data for table `tb_buku`
 --
 
 INSERT INTO `tb_buku` (`id_buku`, `judul_buku`, `penulis`, `penerbit`, `tahun`, `id_kategori`, `gambar`, `harga`, `stok`) VALUES
-(2, 'Harry Potter', 'J.K Rowling', 'J.K Rowling', '2010', 1, 'pexels-shvetsa-4226140.jpg', 20000, 200),
-(3, 'Web HTML CSS', 'Adji Muhamad Zidan', 'Erlangga', '2025', 3, 'pexels-ferarcosn-191877.jpg', 50000, 50),
-(4, 'Naruto Shipudden', 'Masashi Kishimoto', 'Masashi Kishimoto', '2025', 4, 'pexels-atypeek-5650141.jpg', 50000, 50),
-(5, 'Sistem Basis Data', 'Sherlok Holmes', 'Sherlok Holmes', '2020', 3, 'pexels-pok-rie-33563-1655166.jpg', 50000, 50),
-(6, 'Sistem Komputer', 'Erlangga', 'Erlangga', '2018', 3, 'mobil jdm-1.jpg', 20000, 80),
-(7, 'Algoritma ', 'Erlangga', 'Erlangga', '2017', 3, 'pexels-sindre-strøm-1144176.jpg', 80000, 85);
+(2, 'Harry Potter', 'J.K Rowling', 'J.K Rowling', '2010', 1, 'Harry_potter_deathly_hallows_US.jpg', 20000, 200),
+(3, 'Web HTML CSS', 'Adji Muhamad Zidan', 'Erlangga', '2025', 3, 'web.jpg', 50000, 50),
+(4, 'Naruto Shipudden', 'Masashi Kishimoto', 'Masashi Kishimoto', '2025', 4, 'naruto.jpg', 50000, 50),
+(5, 'Sistem Basis Data', 'Sherlok Holmes', 'Sherlok Holmes', '2020', 3, 'basisdata.jpg', 50000, 50),
+(6, 'Sistem Komputer', 'Erlangga', 'Erlangga', '2018', 3, 'siskom.jpg', 20000, 80),
+(7, 'Algoritma ', 'Erlangga', 'Erlangga', '2017', 3, 'algoritma.jpg', 80000, 85);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_kategori`
+-- Table structure for table `tb_kategori`
 --
 
 CREATE TABLE `tb_kategori` (
@@ -83,18 +83,20 @@ CREATE TABLE `tb_kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_kategori`
+-- Dumping data for table `tb_kategori`
 --
 
 INSERT INTO `tb_kategori` (`id_kategori`, `kategori`) VALUES
 (1, 'Pendidikan'),
 (3, 'Programming'),
-(4, 'Komik');
+(4, 'Komik'),
+(7, 'Religis'),
+(8, 'Sains');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_keranjang`
+-- Table structure for table `tb_keranjang`
 --
 
 CREATE TABLE `tb_keranjang` (
@@ -105,17 +107,19 @@ CREATE TABLE `tb_keranjang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_keranjang`
+-- Dumping data for table `tb_keranjang`
 --
 
 INSERT INTO `tb_keranjang` (`id_cart`, `id_user`, `id_buku`, `jumlah`) VALUES
 (10, 2, 7, 1),
-(11, 3, 7, 1);
+(17, 3, 6, 1),
+(18, 3, 5, 1),
+(19, 3, 4, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_pesanan`
+-- Table structure for table `tb_pesanan`
 --
 
 CREATE TABLE `tb_pesanan` (
@@ -129,20 +133,22 @@ CREATE TABLE `tb_pesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_pesanan`
+-- Dumping data for table `tb_pesanan`
 --
 
 INSERT INTO `tb_pesanan` (`id_order`, `id_buku`, `id_user`, `jumlah`, `status`, `metode`, `created_at`) VALUES
-(4, 7, 2, '1', 'dikirim', 'transfer-bank', '2025-05-13 08:20:22'),
-(5, 6, 2, '1', 'dikirim', 'transfer-bank', '2025-05-13 08:20:38'),
-(6, 5, 2, '1', 'dikirim', 'transfer-bank', '2025-05-13 08:20:42'),
-(7, 3, 3, '1', 'proses', 'transfer-bank', '2025-05-13 10:42:32'),
-(8, 6, 3, '1', 'proses', 'transfer-bank', '2025-05-13 10:42:41');
+(4, 7, 2, '1', 'dikirim', 'transfer-bank', '2025-05-14 08:20:22'),
+(5, 6, 2, '1', 'dikirim', 'transfer-bank', '2025-05-14 08:20:38'),
+(6, 5, 2, '1', 'dikirim', 'transfer-bank', '2025-05-14 08:20:42'),
+(7, 3, 3, '1', 'proses', 'transfer-bank', '2025-05-14 10:42:32'),
+(8, 6, 3, '1', 'proses', 'transfer-bank', '2025-05-14 10:42:41'),
+(9, 2, 3, '1', 'dikirim', 'transfer-bank', '2025-05-15 02:33:10'),
+(10, 7, 3, '1', 'dikirim', 'transfer-bank', '2025-05-15 02:33:15');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_user`
+-- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -157,7 +163,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_user`
+-- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `password`, `nama_pengguna`, `jenis_kelamin`, `no_telp`, `alamat`, `created_at`) VALUES
@@ -170,26 +176,26 @@ INSERT INTO `tb_user` (`id_user`, `username`, `password`, `nama_pengguna`, `jeni
 --
 
 --
--- Indeks untuk tabel `tb_admin`
+-- Indexes for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `tb_buku`
+-- Indexes for table `tb_buku`
 --
 ALTER TABLE `tb_buku`
   ADD PRIMARY KEY (`id_buku`),
   ADD KEY `id_kategori` (`id_kategori`);
 
 --
--- Indeks untuk tabel `tb_kategori`
+-- Indexes for table `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indeks untuk tabel `tb_keranjang`
+-- Indexes for table `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
   ADD PRIMARY KEY (`id_cart`),
@@ -197,7 +203,7 @@ ALTER TABLE `tb_keranjang`
   ADD KEY `id_buku` (`id_buku`);
 
 --
--- Indeks untuk tabel `tb_pesanan`
+-- Indexes for table `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
   ADD PRIMARY KEY (`id_order`),
@@ -205,70 +211,70 @@ ALTER TABLE `tb_pesanan`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tb_user`
+-- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_admin`
+-- AUTO_INCREMENT for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_buku`
+-- AUTO_INCREMENT for table `tb_buku`
 --
 ALTER TABLE `tb_buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_kategori`
+-- AUTO_INCREMENT for table `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_keranjang`
+-- AUTO_INCREMENT for table `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_pesanan`
+-- AUTO_INCREMENT for table `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_user`
+-- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tb_buku`
+-- Constraints for table `tb_buku`
 --
 ALTER TABLE `tb_buku`
   ADD CONSTRAINT `tb_buku_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `tb_kategori` (`id_kategori`);
 
 --
--- Ketidakleluasaan untuk tabel `tb_keranjang`
+-- Constraints for table `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
   ADD CONSTRAINT `tb_keranjang_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `tb_buku` (`id_buku`),
   ADD CONSTRAINT `tb_keranjang_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `tb_pesanan`
+-- Constraints for table `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
   ADD CONSTRAINT `tb_pesanan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`),

@@ -1,6 +1,7 @@
 <?php
 
-$sql = "SELECT tb_pesanan.id_order, tb_pesanan.id_buku, tb_buku.judul_buku, tb_pesanan.id_user, tb_user.nama_pengguna, tb_pesanan.jumlah, tb_buku.harga, tb_pesanan.status, tb_pesanan.metode, tb_pesanan.created_at FROM tb_pesanan INNER JOIN tb_buku ON tb_pesanan.id_buku = tb_buku.id_buku INNER JOIN tb_user ON tb_pesanan.id_user = tb_user.id_user";
+$sql = "SELECT tb_pesanan.id_order, tb_pesanan.id_buku, tb_buku.judul_buku, tb_pesanan.id_user, tb_user.nama_pengguna, tb_pesanan.jumlah, tb_buku.harga, tb_pesanan.status, 
+tb_pesanan.metode, tb_pesanan.created_at FROM tb_pesanan INNER JOIN tb_buku ON tb_pesanan.id_buku = tb_buku.id_buku INNER JOIN tb_user ON tb_pesanan.id_user = tb_user.id_user";
 
 $query = mysqli_query($connectDB, $sql);
 

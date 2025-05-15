@@ -8,7 +8,7 @@ $query = mysqli_query($connectDB, $sql);
 
 ?>
 
-<div class="row">
+<div class="row mb-5">
     <div class="col">
         <h1 class="mb-4 h2">Daftar Buku</h1>
         <a href="index.php?hal=tambah_buku" class="btn btn-primary btn-sm mb-3">Tambah Data</a>
@@ -41,7 +41,7 @@ $query = mysqli_query($connectDB, $sql);
                         <td class="text-center"><?= $data['tahun']; ?></td>
                         <td><?= $data['kategori']; ?></td>
                         <td class="text-center">
-                            <img src="uploads/<?= $data['gambar']; ?>" alt="gambar_sampul" class="img-thumbnail" style="width: 80px; height: 50px;">
+                            <img src="uploads/<?= $data['gambar']; ?>" alt="gambar_sampul" class="img-thumbnail" style="width: 80px; height: 100px;">
                         </td>
                         <td><?= 'Rp. ' . number_format($data['harga'], 0, ',', '.'); ?></td>
                         <td class=" text-center"><?= $data['stok']; ?>
