@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Bulan Mei 2025 pada 02.53
+-- Waktu pembuatan: 25 Bulan Mei 2025 pada 05.02
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.1.31
 
@@ -64,10 +64,11 @@ CREATE TABLE `tb_buku` (
 --
 
 INSERT INTO `tb_buku` (`id_buku`, `judul_buku`, `penulis`, `penerbit`, `tahun`, `id_kategori`, `gambar`, `harga`, `stok`) VALUES
-(1, 'Sistem Basis Data', 'Erlangga', 'Erlangga', '2022', 1, 'basisdata.jpg', 85000, 200),
+(1, 'Sistem Basis Data 2', 'Erlangga', 'Erlangga', '2022', 1, 'basisdata.jpg', 85000, 200),
 (3, 'Naruto Shipudden', 'Masashi Kishimoto', 'Masashi Kishimoto', '2022', 5, 'naruto.jpg', 50000, 85),
 (4, 'Web HTML CSS', 'Adji Muhamad Zidan', 'Erlangga', '2018', 4, 'web.jpg', 50000, 50),
-(5, 'Algoritma ', 'Erlangga', 'Erlangga', '2018', 4, 'algoritma.jpg', 50000, 50);
+(5, 'Algoritma ', 'Erlangga', 'Erlangga', '2018', 4, 'algoritma.jpg', 50000, 50),
+(6, 'Harry Potter', 'J.K Rowling', 'J.K Rowling', '2010', 6, 'Harry_potter_deathly_hallows_US.jpg', 50000, 80);
 
 -- --------------------------------------------------------
 
@@ -89,8 +90,7 @@ INSERT INTO `tb_kategori` (`id_kategori`, `kategori`) VALUES
 (3, 'Religi'),
 (4, 'Programming'),
 (5, 'Petualangan'),
-(6, 'Horror'),
-(7, 'Komik');
+(6, 'Horror');
 
 -- --------------------------------------------------------
 
@@ -104,6 +104,36 @@ CREATE TABLE `tb_keranjang` (
   `id_buku` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tb_keranjang`
+--
+
+INSERT INTO `tb_keranjang` (`id_cart`, `id_user`, `id_buku`, `jumlah`) VALUES
+(16, 1, 4, 1),
+(17, 1, 1, 1),
+(18, 1, 5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_kontak`
+--
+
+CREATE TABLE `tb_kontak` (
+  `id_kontak` int(11) NOT NULL,
+  `nama_pengirim` varchar(30) NOT NULL,
+  `pesan` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tb_kontak`
+--
+
+INSERT INTO `tb_kontak` (`id_kontak`, `nama_pengirim`, `pesan`, `created_at`) VALUES
+(1, 'Anonim', 'Apakah masih ada?', '2025-05-23 14:47:52'),
+(2, 'AdjiMZ', 'Ada produk apa saja?', '2025-05-23 14:48:56');
 
 -- --------------------------------------------------------
 
@@ -127,7 +157,7 @@ CREATE TABLE `tb_pesanan` (
 
 INSERT INTO `tb_pesanan` (`id_order`, `id_buku`, `id_user`, `jumlah`, `status`, `metode`, `created_at`) VALUES
 (1, 1, 1, '1', 'dikirim', 'transfer-bank', '2025-05-18 00:46:30'),
-(2, 4, 1, '1', 'dikirim', 'transfer-bank', '2025-05-18 00:46:34');
+(2, 4, 1, '1', 'proses', 'transfer-bank', '2025-05-24 10:51:39');
 
 -- --------------------------------------------------------
 
@@ -186,6 +216,12 @@ ALTER TABLE `tb_keranjang`
   ADD KEY `id_buku` (`id_buku`);
 
 --
+-- Indeks untuk tabel `tb_kontak`
+--
+ALTER TABLE `tb_kontak`
+  ADD PRIMARY KEY (`id_kontak`);
+
+--
 -- Indeks untuk tabel `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
@@ -213,7 +249,7 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT untuk tabel `tb_buku`
 --
 ALTER TABLE `tb_buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kategori`
@@ -225,7 +261,13 @@ ALTER TABLE `tb_kategori`
 -- AUTO_INCREMENT untuk tabel `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_kontak`
+--
+ALTER TABLE `tb_kontak`
+  MODIFY `id_kontak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pesanan`
