@@ -17,13 +17,24 @@ if (!isset($_SESSION['id_admin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore | Dashboard</title>
 
+    <style>
+        .navbar {
+            background-color: #0c2461;
+        }
+
+        .btn-primary {
+            background-color: #0c2461 !important;
+            border-color: #0c2461 !important;
+        }
+    </style>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand text-uppercase" href="index.php">Bookstore</a>
+            <a class="navbar-brand text-uppercase fw-bold" href="index.php">Bookstore</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,6 +53,9 @@ if (!isset($_SESSION['id_admin'])) {
                         <a class="nav-link <?= $active4; ?>" href="index.php?hal=data_pesanan&section=pesanan">Data Pesanan</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link <?= $active5; ?>" href="index.php?hal=data_kontak&section=kontak">Data Kontak</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="halaman/process/proses_logout_admin.php">Logout</a>
                     </li>
                     <li class="nav-item">
@@ -54,10 +68,10 @@ if (!isset($_SESSION['id_admin'])) {
 
     <main>
         <div class="container p-3">
+
             <?php require 'config_admin/config_page.php'; ?>
         </div>
     </main>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>

@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['keyword'])) {
 }
 
 $query = mysqli_query($connectDB, $sql);
+$jumlahData = mysqli_num_rows($query);
 
 ?>
 
@@ -31,33 +32,46 @@ $query = mysqli_query($connectDB, $sql);
 
 <div class="row mt-3 mb-5">
     <?php
-    while ($data = mysqli_fetch_assoc($query)) :
+    if ($jumlahData == 0) {
     ?>
-        <div class="col-3 mb-3">
-            <div class="card">
-                <img src="admin/uploads/<?= $data['gambar']; ?>" class="card-img-top object-fit-cover" alt="gambar" height="200">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $data['judul_buku']; ?></h5>
-                    <p class="card-text fw-bold mb-2">Rp. <?= number_format($data['harga'], 0, ',', '.'); ?></p>
-                    <p class="card-text mb-0">Kategori <?= $data['kategori']; ?></p>
-                    <p class="card-text mb-0">Penulis <?= $data['penulis']; ?></p>
-                    <p class="card-text">Penerbit <?= $data['penerbit']; ?></p>
-                    <?php
-                    if (isset($_SESSION['id_user'])) {
-                    ?>
-                        <a href="user/config_user/proses_addcart.php?idbuku=<?= $data['id_buku']; ?>&iduser=<?= $_SESSION['id_user']; ?>" class="btn btn-primary">Add Cart</a>
-                    <?php
-                    } else {
-                    ?>
-                        <a href="index.php?hal=loginuser" class="btn btn-primary">Add Cart</a>
-                    <?php
-                    }
-                    ?>
-                </div>
-            </div>
+        <div class="alert alert-info" role="alert">
+            Data buku belum tersedia..
         </div>
     <?php
-    endwhile;
+    } else {
+    ?>
+        <?php
+        while ($data = mysqli_fetch_assoc($query)) :
+        ?>
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="admin/uploads/<?= $data['gambar']; ?>" class="card-img-top object-fit-cover" alt="gambar" height="400">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $data['judul_buku']; ?></h5>
+                        <p class="card-text fw-bold mb-2">Rp. <?= number_format($data['harga'], 0, ',', '.'); ?></p>
+                        <p class="card-text mb-0">Kategori <?= $data['kategori']; ?></p>
+                        <p class="card-text mb-0">Penulis <?= $data['penulis']; ?></p>
+                        <p class="card-text">Penerbit <?= $data['penerbit']; ?></p>
+
+                        <?php
+                        if (isset($_SESSION['id_user'])) {
+                        ?>
+                            <a href="user/config_user/proses_addcart.php?idbuku=<?= $data['id_buku']; ?>&iduser=<?= $_SESSION['id_user']; ?>" class="btn btn-primary">Add Cart</a>
+                        <?php
+                        } else {
+                        ?>
+                            <a href="index.php?hal=loginuser" class="btn btn-primary">Add Cart</a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        <?php
+        endwhile;
+        ?>
+    <?php
+    }
     ?>
 </div>
 </div>

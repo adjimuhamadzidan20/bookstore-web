@@ -4,6 +4,19 @@
             <div class="card-body">
                 <h1 class="text-center h2 mb-2">Login User</h1>
                 <div class="mb-3 text-center text-secondary">Masuk sebagai pengguna</div>
+
+                <?php
+                if (isset($_SESSION['pesan']) && isset($_SESSION['status'])) :
+                ?>
+                    <div class="alert alert-<?= $_SESSION['status']; ?>" role="alert">
+                        <?= $_SESSION['pesan']; ?>
+                    </div>
+                <?php
+                    unset($_SESSION['pesan']);
+                    unset($_SESSION['status']);
+                endif;
+                ?>
+
                 <form action="user/config_user/proses_login.php" method="post" class="border-top">
                     <div class="mb-3 mt-3">
                         <label for="exampleFormControlInput1" class="form-label">Username</label>

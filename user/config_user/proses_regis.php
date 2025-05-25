@@ -15,6 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query = mysqli_query($connectDB, $sql);
 
     if ($query) {
+        $_SESSION['pesan'] = 'Register berhasil!';
+        $_SESSION['status'] = 'success';
+
         header('Location: ../../index.php?hal=loginuser');
         exit;
     } else {

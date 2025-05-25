@@ -55,7 +55,7 @@ $queryKat = mysqli_query($connectDB, $sqlKategori);
                         <div class="col">
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Gambar</label><br>
-                                <img src="uploads/<?= $data['gambar']; ?>" alt="gambar" class="mb-3 img-thumbnail" style="width: 100px; height: 70px;">
+                                <img src="uploads/<?= $data['gambar']; ?>" alt="gambar" class="mb-3 img-thumbnail" style="width: 100px; height: 120px;">
                                 <input class="form-control" type="file" id="formFile" name="gambar">
                             </div>
                             <div class="mb-3">

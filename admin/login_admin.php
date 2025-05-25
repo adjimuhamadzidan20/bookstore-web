@@ -17,10 +17,21 @@ if (isset($_SESSION['id_admin'])) {
     <title>Bookstore | Admin</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <style>
+        .navbar {
+            background-color: #0c2461;
+        }
+
+        .btn-primary {
+            background-color: #0c2461 !important;
+            border-color: #0c2461 !important;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand text-uppercase" href="index.php">Bookstore</a>
         </div>
@@ -34,6 +45,19 @@ if (isset($_SESSION['id_admin'])) {
                         <div class="card-body">
                             <h1 class="text-center h2 mb-2">Login Admin</h1>
                             <div class="mb-3 text-center text-secondary">Masuk sebagai admin</div>
+
+                            <?php
+                            if (isset($_SESSION['pesan']) && isset($_SESSION['status'])) :
+                            ?>
+                                <div class="alert alert-<?= $_SESSION['status']; ?>" role="alert">
+                                    <?= $_SESSION['pesan']; ?>
+                                </div>
+                            <?php
+                                unset($_SESSION['pesan']);
+                                unset($_SESSION['status']);
+                            endif;
+                            ?>
+
                             <form action="halaman/process/proses_login_admin.php" method="post" class="border-top">
                                 <div class="mb-3 mt-3">
                                     <label for="exampleFormControlInput1" class="form-label">Username</label>

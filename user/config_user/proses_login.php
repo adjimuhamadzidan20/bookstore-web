@@ -20,6 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit;
         }
     } else {
-        echo 'Username atau password salah';
+        $_SESSION['pesan'] = 'Username atau password salah!';
+        $_SESSION['status'] = 'danger';
+
+        header('Location: ../../index.php?hal=loginuser');
+        exit;
     }
 }

@@ -20,6 +20,8 @@ if (isset($_GET['hal'])) {
         include 'halaman/data_pesanan.php';
     } else if ($bagian == 'data_pengguna') {
         include 'halaman/data_user.php';
+    } else if ($bagian == 'data_kontak') {
+        include 'halaman/data_kontak.php';
     } else {
         include 'halaman/data_kategori.php';
     }

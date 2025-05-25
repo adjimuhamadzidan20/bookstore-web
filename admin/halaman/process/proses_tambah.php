@@ -1,5 +1,6 @@
 <?php
 require '../../../configdb/config_db.php';
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['proses'] == 'tambah_buku') {
     $judulBuku = $_POST['judul_buku'];
@@ -25,7 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['proses'] == 'tambah_buku') {
             $query = mysqli_query($connectDB, $sql);
 
             if ($query) {
-                header('Location: ../../index.php?hal=data_buku');
+                $_SESSION['pesan'] = 'Data buku berhasil ditambahkan!';
+                $_SESSION['status'] = 'success';
+
+                header('Location: ../../index.php?hal=data_buku&section=buku');
                 exit;
             } else {
                 echo 'Error :' . mysqli_error($connectDB);
@@ -42,7 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['proses'] == 'tambah_buku') {
     $query = mysqli_query($connectDB, $sql);
 
     if ($query) {
-        header('Location: ../../index.php?hal=data_kategori');
+        $_SESSION['pesan'] = 'Kategori berhasil ditambahkan!';
+        $_SESSION['status'] = 'success';
+
+        header('Location: ../../index.php?hal=data_kategori&section=kategori');
         exit;
     } else {
         echo 'Error :' . mysqli_error($conn);

@@ -1,19 +1,21 @@
 <?php
 
-$sql = "SELECT * FROM tb_user";
+$sql = "SELECT * FROM tb_kontak";
+
 $query = mysqli_query($connectDB, $sql);
 $jumlahData = mysqli_num_rows($query);
 
 ?>
+
 <div class="row">
     <div class="col">
-        <h1 class="mb-4 h2">Daftar Pengguna</h1>
+        <h1 class="mb-4 h2">Data Kontak</h1>
 
         <?php
         if ($jumlahData == 0) {
         ?>
             <div class="alert alert-primary mt-2" role="alert">
-                Data pengguna belum tersedia..
+                Data kontak belum tersedia..
             </div>
         <?php
         } else {
@@ -22,13 +24,9 @@ $jumlahData = mysqli_num_rows($query);
                 <thead>
                     <tr>
                         <th scope="col" class="text-center">No</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Nama Pengguna</th>
-                        <th scope="col">Jenis Kelamin</th>
-                        <th scope="col">No Telp</th>
-                        <th scope="col">Alamat</th>
-                        <th scope="col">Created At</th>
+                        <th scope="col">Nama Pengirim</th>
+                        <th scope="col">Pesan</th>
+                        <th scope="col">Waktu</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,12 +37,8 @@ $jumlahData = mysqli_num_rows($query);
                     ?>
                         <tr>
                             <td scope="row" class="text-center"><?= $no; ?></td>
-                            <td><?= 'USR0' . $data['id_user']; ?></td>
-                            <td><?= $data['username']; ?></td>
-                            <td><?= $data['nama_pengguna']; ?></td>
-                            <td><?= $data['jenis_kelamin']; ?></td>
-                            <td><?= $data['no_telp']; ?></td>
-                            <td><?= $data['alamat']; ?></td>
+                            <td><?= $data['nama_pengirim']; ?></td>
+                            <td><?= $data['pesan']; ?></td>
                             <td><?= $data['created_at']; ?></td>
                         </tr>
                     <?php

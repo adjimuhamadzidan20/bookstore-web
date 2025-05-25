@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Bulan Mei 2025 pada 01.25
+-- Waktu pembuatan: 18 Bulan Mei 2025 pada 02.53
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.1.31
 
@@ -64,12 +64,10 @@ CREATE TABLE `tb_buku` (
 --
 
 INSERT INTO `tb_buku` (`id_buku`, `judul_buku`, `penulis`, `penerbit`, `tahun`, `id_kategori`, `gambar`, `harga`, `stok`) VALUES
-(2, 'Harry Potter', 'J.K Rowling', 'J.K Rowling', '2010', 1, 'pexels-shvetsa-4226140.jpg', 20000, 200),
-(3, 'Web HTML CSS', 'Adji Muhamad Zidan', 'Erlangga', '2025', 3, 'pexels-ferarcosn-191877.jpg', 50000, 50),
-(4, 'Naruto Shipudden', 'Masashi Kishimoto', 'Masashi Kishimoto', '2025', 4, 'pexels-atypeek-5650141.jpg', 50000, 50),
-(5, 'Sistem Basis Data', 'Sherlok Holmes', 'Sherlok Holmes', '2020', 3, 'pexels-pok-rie-33563-1655166.jpg', 50000, 50),
-(6, 'Sistem Komputer', 'Erlangga', 'Erlangga', '2018', 3, 'mobil jdm-1.jpg', 20000, 80),
-(7, 'Algoritma ', 'Erlangga', 'Erlangga', '2017', 3, 'pexels-sindre-strøm-1144176.jpg', 80000, 85);
+(1, 'Sistem Basis Data', 'Erlangga', 'Erlangga', '2022', 1, 'basisdata.jpg', 85000, 200),
+(3, 'Naruto Shipudden', 'Masashi Kishimoto', 'Masashi Kishimoto', '2022', 5, 'naruto.jpg', 50000, 85),
+(4, 'Web HTML CSS', 'Adji Muhamad Zidan', 'Erlangga', '2018', 4, 'web.jpg', 50000, 50),
+(5, 'Algoritma ', 'Erlangga', 'Erlangga', '2018', 4, 'algoritma.jpg', 50000, 50);
 
 -- --------------------------------------------------------
 
@@ -88,8 +86,11 @@ CREATE TABLE `tb_kategori` (
 
 INSERT INTO `tb_kategori` (`id_kategori`, `kategori`) VALUES
 (1, 'Pendidikan'),
-(3, 'Programming'),
-(4, 'Komik');
+(3, 'Religi'),
+(4, 'Programming'),
+(5, 'Petualangan'),
+(6, 'Horror'),
+(7, 'Komik');
 
 -- --------------------------------------------------------
 
@@ -103,14 +104,6 @@ CREATE TABLE `tb_keranjang` (
   `id_buku` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `tb_keranjang`
---
-
-INSERT INTO `tb_keranjang` (`id_cart`, `id_user`, `id_buku`, `jumlah`) VALUES
-(10, 2, 7, 1),
-(11, 3, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -133,11 +126,8 @@ CREATE TABLE `tb_pesanan` (
 --
 
 INSERT INTO `tb_pesanan` (`id_order`, `id_buku`, `id_user`, `jumlah`, `status`, `metode`, `created_at`) VALUES
-(4, 7, 2, '1', 'dikirim', 'transfer-bank', '2025-05-13 08:20:22'),
-(5, 6, 2, '1', 'dikirim', 'transfer-bank', '2025-05-13 08:20:38'),
-(6, 5, 2, '1', 'dikirim', 'transfer-bank', '2025-05-13 08:20:42'),
-(7, 3, 3, '1', 'proses', 'transfer-bank', '2025-05-13 10:42:32'),
-(8, 6, 3, '1', 'proses', 'transfer-bank', '2025-05-13 10:42:41');
+(1, 1, 1, '1', 'dikirim', 'transfer-bank', '2025-05-18 00:46:30'),
+(2, 4, 1, '1', 'dikirim', 'transfer-bank', '2025-05-18 00:46:34');
 
 -- --------------------------------------------------------
 
@@ -161,9 +151,8 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `password`, `nama_pengguna`, `jenis_kelamin`, `no_telp`, `alamat`, `created_at`) VALUES
-(2, 'admin', '$2y$10$7AlvH9txwHMjh9BslboAR.SoEqq1ZVqu2J27KOjcKPTLigRzUBQuK', 'Customer123', 'Laki-laki', '0877666', 'Bekasi', '2025-05-13 10:43:27'),
-(3, 'admin123', '$2y$10$z4S0vmZeGigG.LUpHky8G.igumpQXpj1MDdHYLFYI8TK0jGyLbM5G', 'Adji MZ', 'Laki-laki', '087769999', 'Bekasi Kota', '2025-05-12 07:32:51'),
-(4, 'beyourselfit', '$2y$10$uwTWTtqBiQw2tLdo0hGzSeiG6X9za9uJzqd5GwOuFzjJgO..MTibW', 'Beyourselfit', 'Laki-laki', '08999900', 'Jakarta', '2025-05-12 08:12:20');
+(1, 'pengguna123', '$2y$10$lA2Ieadh.GhVA/PM.SKOaed5.C4101tU7wTUiW1RlEEos6sZgfoPC', 'Beyourselfit', 'Laki-laki', '0877666', 'Kota Bekasi', '2025-05-17 12:11:08'),
+(2, 'adji123', '$2y$10$Jaau/4Udfg/LZC34uT9BWurDJxRh2Vmu3Dc08aXvd5ks8lYz5Y1o2', 'Adji Muhamad Zidan', 'Laki-laki', '08999900', 'Kota Bekasi', '2025-05-17 13:02:17');
 
 --
 -- Indexes for dumped tables
@@ -224,31 +213,31 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT untuk tabel `tb_buku`
 --
 ALTER TABLE `tb_buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -258,21 +247,21 @@ ALTER TABLE `tb_user`
 -- Ketidakleluasaan untuk tabel `tb_buku`
 --
 ALTER TABLE `tb_buku`
-  ADD CONSTRAINT `tb_buku_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `tb_kategori` (`id_kategori`);
+  ADD CONSTRAINT `tb_buku_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `tb_kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
-  ADD CONSTRAINT `tb_keranjang_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `tb_buku` (`id_buku`),
-  ADD CONSTRAINT `tb_keranjang_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
+  ADD CONSTRAINT `tb_keranjang_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `tb_buku` (`id_buku`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_keranjang_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
-  ADD CONSTRAINT `tb_pesanan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`),
-  ADD CONSTRAINT `tb_pesanan_ibfk_2` FOREIGN KEY (`id_buku`) REFERENCES `tb_buku` (`id_buku`);
+  ADD CONSTRAINT `tb_pesanan_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `tb_buku` (`id_buku`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_pesanan_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
